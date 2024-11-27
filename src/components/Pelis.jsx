@@ -23,7 +23,7 @@ const Pelis = ({ navigation }) => {
       .catch(err => console.log(err));
   }, []);
 
-  const navigateToFavorites = async () => {
+  const navigateTofavoritos = async () => {
     const favoritos = await AsyncStorage.getItem('favoritos');
     const favoritosArray = favoritos ? JSON.parse(favoritos) : [];
     navigation.navigate('Favoritos', { favoritos: favoritosArray });
@@ -45,7 +45,7 @@ const Pelis = ({ navigation }) => {
             value={search}
           />
 
-          <TouchableOpacity style={styles.button} onPress={navigateToFavorites}>
+          <TouchableOpacity style={styles.button} onPress={navigateTofavoritos}>
             <Text style={styles.buttonText}>Ver mis Favoritos</Text>
           </TouchableOpacity>
 
