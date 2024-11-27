@@ -5,15 +5,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const DetalleSerie = ({ route }) => {
   const { serie } = route.params;
 
-  const agregarAfavorites = async () => {
+  const agregarAfavoritos = async () => {
     try {
-      const favorites = await AsyncStorage.getItem('favorites');
-      const favoritesArray = favorites ? JSON.parse(favorites) : [];
-      favoritesArray.push(serie);
-      await AsyncStorage.setItem('favorites', JSON.stringify(favoritesArray));
-      alert('Agregado a favorites');
+      const favoritos = await AsyncStorage.getItem('favoritos');
+      const favoritosArray = favoritos ? JSON.parse(favoritos) : [];
+      favoritosArray.push(serie);
+      await AsyncStorage.setItem('favoritos', JSON.stringify(favoritosArray));
+      alert('Agregado a favoritos');
     } catch (error) {
-      alert('Error al agregar a favorites');
+      alert('Error al agregar a favoritos');
     }
   };
 
@@ -30,8 +30,8 @@ const DetalleSerie = ({ route }) => {
 
       <Text style={styles.rating}>Puntuación: {serie.rating.average || 'No disponible'}</Text>
 
-      <Pressable style={styles.button} onPress={agregarAfavorites}>
-        <Text style={styles.buttonText}>Agregar a favorites</Text>
+      <Pressable style={styles.button} onPress={agregarAfavoritos}>
+        <Text style={styles.buttonText}>Agregar a favoritos</Text>
       </Pressable>
 
     </ScrollView>
